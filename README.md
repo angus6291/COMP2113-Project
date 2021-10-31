@@ -14,4 +14,3 @@ A player will need to choose the grid size first (by entering '3' or '4'), and t
 
 Disclaimer: The details are subject to change. We don't know whether the procedures to realize the idea are simple or not.
 
-jk

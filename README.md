@@ -14,6 +14,8 @@ A player will need to choose the grid size first (by inputting character '3' or 
 
 If the player chooses 3x3 grid, a vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. If the player chooses 4x4 grid, vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} will be initiated.
 
+int number_of_terms_in_the_vector = v.size()
+
 int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % number_of_terms_in_the_vector
 
 int Number_to_be_guessed = v[Index_of_number_to_be_guessed_in_the_vector]
@@ -52,7 +54,7 @@ Code requirement 3: Dynamic memory management
 
 Code requirement 4: File input/output (e.g. for loading/saving game status)
 
-After the player has successfully or unsucessfully guessed a number, the number will be changed to a "O" or "X" on the bingo board. If the player presses "S" to save the status, the data of the current game progress will be saved in a file. 
+After the player has successfully or unsucessfully guessed a number, the number will be changed to a "O" or "X" on the bingo board. When the player presses "S" to save the status, the data of the current game progress will be saved in a file. 
 
 If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.
 

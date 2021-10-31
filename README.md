@@ -57,7 +57,9 @@ We will ultilise vector for storing the number to be guessed for each box in the
 
 Code requirement 3: Dynamic memory management
 
-For checking whether the user input is the same with the corresponding "Number_to_be_guessed", the input will be sotred as player's_input and run loop until they have the right guess, meanwhile as mentioned above 
+For checking whether the user input is the same with the corresponding "Number_to_be_guessed", the input will be sotred as "player's_input" and run loop until they have the right guess, if they have the right guess, "0" will added into the output bingo board vector, while the number in the corresponding guessing number vector with the same location will be removed. If player has the wrong guess, "X" will be added into the output bingo board vector, while the number will be removed from guessing number vector as well.
+
+Meanwhile, if player press "E" or "e" to exit, we have to remove all the storage in the output bingo board and reset the number to be guessed vector to it's inital length.
 
 Code requirement 4: File input/output (e.g. for loading/saving game status)
 

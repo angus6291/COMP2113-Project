@@ -20,13 +20,13 @@ int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % number_of_
 
 int Number_to_be_guessed = v[Index_of_number_to_be_guessed_in_the_vector]
 
-int Number_of_attempts_allowed = 7
+if the player chooses 3x3 grid, int Number_of_attempts_allowed = 7. If the player chooses 4x4 grid, in Number_of_attempts_allowed = 10.
 
 int Number_of_attempts_left = Number_of_attempts_allowed
 
 int player's_input
 
-When the player inputs a number (stored into variable 'player's_input'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/4th/5th/6th/7th (last) trial, if the two numbers match:
+When the player inputs a number (stored into variable 'player's_input'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/.../last trial, if the two numbers match:
 
 1. print out 'Yeah! this is the number we want!'
 

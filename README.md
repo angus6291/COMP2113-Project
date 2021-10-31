@@ -8,6 +8,8 @@ Tentative name of the game: 'Try your luck'
 
 Concept: mixing 'guessing random numbers' and 'bingo' games
 
+(nxn bingo: if any n colinear positions become "O", the player wins the bingo)
+
 The grid size of the 'bingo' board will be 3x3 or 4x4 (if the grid size includes 5x5, we are afraid the game will take too long).
 
 A player will need to choose the grid size first (by inputting character '3' or character '4'), and then play the game of 'guessing random numbers'. (If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.) If the player enters other characters, the player will be asked "DO YOU WANT TO EXIT?". If the player presses character "Y", player will exit the game. If the player presses other characters, the player will need to choose the grid size again. When playing the game of 'guessing random number', the player will have 7 chances to guess the number. (WARNING: YOU CANNOT SAVE YOUR PROGRESS IN 'GUESSING RANDOM NUMBER' GAME.) 

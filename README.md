@@ -2,7 +2,7 @@ COMP2113/ENGG1340 Course project brief introduction
 
 Group No.: 134
 
-Group Members: Tse Tsz Chun, Lam Chun Yin
+Group Members: Tse Tsz Chun, Lam Chun Yin Angus
 
 Tentative name of the game: 'Try your luck'
 
@@ -14,19 +14,17 @@ A player will need to choose the grid size first (by inputting character '3' or 
 
 If the player chooses 3x3 grid, a vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. If the player chooses 4x4 grid, vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} will be initiated.
 
-int number_of_terms_in_the_vector = v.size()
-
-int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % number_of_terms_in_the_vector
+int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % 10 (for 3x3), srand(time(NULL)) % 17 (for 4x4)
 
 int Number_to_be_guessed = v[Index_of_number_to_be_guessed_in_the_vector]
 
-if the player chooses 3x3 grid, int Number_of_attempts_allowed = 7. If the player chooses 4x4 grid, in Number_of_attempts_allowed = 10.
+int Number_of_attempts_allowed = 7 (for 3x3), 10 (for 4x4)
 
 int Number_of_attempts_left = Number_of_attempts_allowed
 
 int player's_input
 
-When the player inputs a number (stored into variable 'player's_input'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/.../last trial, if the two numbers match:
+When the player inputs a number (stored into variable 'player's_input'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/4th/5th/6th/7th (last) trial, if the two numbers match:
 
 1. print out 'Yeah! this is the number we want!'
 
@@ -44,27 +42,27 @@ If the player has not yet got a 'bingo', 'guessing random number' game will repe
 
 Disclaimer: The details are subject to change. We don't know whether the procedures to realize the idea are simple or not.
 
+# Code Requirements
 How it satisfies the code requirements
 
 Code requirement 1: Generation of random game sets or events
 
+When the player entered the game, they have to guess the correct number generated 
+
 Code requirement 2: Data structures for storing game status
+
+We will ultilise vector for storing the number to be guessed for each box in the grid boxes, which will be refreshed every play. Meanwhile we will set up another vector for storing the output (bingo board) for sotring the "0" and "X", which a further function would be used to evaluate after the completion of all boxes, whether there are 3 (for 3x3) or 4 (for 4x4) consecutive "0" vertically, horizontally or diagonally, if TRUE, then will output "YOU WIN!!!", else output "YOU LOSS, pls retry :("
 
 Code requirement 3: Dynamic memory management
 
+for checking whether the user input is the same with the corresponding "Number_to_be_guessed" 
+
 Code requirement 4: File input/output (e.g. for loading/saving game status)
 
-After the player has successfully or unsucessfully guessed a number, the number will be changed to a "O" or "X" on the bingo board. When the player presses "S" to save the status, the data of the current game progress will be saved in a file. 
+After the player has successfully or unsucessfully guessed a number, the number will be changed to a "O" or "X" on the bingo board. If the player presses "S" to save the status, the data of the current game progress will be saved in a file. 
 
 If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.
 
 Code requirement 5: Program codes in multiple files
 
 The main program will call functions of multiple files (in the form of header files), such as file(s) for the 'guessing the random number' game and file(s) for the 'bingo' game. Program files apart from the main program file, if needed, will call other header files in.
-
-# Code Requirements
-1. Generation of random game sets or events: 
-2. Data structures for storing game status: 
-3. Dynamic memory management: 
-4. File input/output (e.g., for loading/saving game status): 
-5. Program codes in multiple files: 

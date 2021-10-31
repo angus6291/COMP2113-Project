@@ -1,14 +1,14 @@
-COMP2113/ENGG1340 Course project brief introduction
+# COMP2113/ENGG1340 Course project brief introduction
 
 Group No.: 134
 
 Group Members: Tse Tsz Chun, Lam Chun Yin Angus
 
+# Game Introduction
+
 Tentative name of the game: 'Try your luck'
 
 Concept: mixing 'guessing random numbers' and 'bingo' games
-
-(nxn bingo: if any n colinear positions become "O", the player wins the bingo)
 
 The grid size of the 'bingo' board will be 3x3 or 4x4 (if the grid size includes 5x5, we are afraid the game will take too long).
 
@@ -20,7 +20,7 @@ int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % 10 (for 3x
 
 int Number_to_be_guessed = v[Index_of_number_to_be_guessed_in_the_vector]
 
-int Number_of_attempts_allowed = 7 (for 3x3), 10 (for 4x4)
+int Number_of_attempts_allowed = 7 (for 3x3), 12 (for 4x4)
 
 int Number_of_attempts_left = Number_of_attempts_allowed
 
@@ -49,7 +49,7 @@ How it satisfies the code requirements
 
 Code requirement 1: Generation of random game sets or events
 
-When the player entered the game, they have to guess the correct number generated 
+When the player entered the game, they have to guess the correct number generated from srand(time(NULL)) % 10 (for 3x3), srand(time(NULL)) % 17 (for 4x4), which if you are playing 3x3 grid size, you will have to pick a random number from 0-9 to test whether it meets with the number in the vector which is generated randomly with in 7 trials, for 4x4, you do the same but the range increase to 0-16 and u are given 12 trials.
 
 Code requirement 2: Data structures for storing game status
 
@@ -57,7 +57,7 @@ We will ultilise vector for storing the number to be guessed for each box in the
 
 Code requirement 3: Dynamic memory management
 
-for checking whether the user input is the same with the corresponding "Number_to_be_guessed" 
+For checking whether the user input is the same with the corresponding "Number_to_be_guessed", the input will be sotred as player's_input and run loop until they have the right guess, meanwhile as mentioned above 
 
 Code requirement 4: File input/output (e.g. for loading/saving game status)
 

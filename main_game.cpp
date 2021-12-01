@@ -100,6 +100,12 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
     cout << "I am so sorry that you can't make the miracle. You still cannot guess the correct number. \nBut I believe that you will be luckier in the future." << endl;
   }
   remaining_numbers_not_guessed.erase(index_of_number_to_be_guessed_in_the_remaining_numbers_list);
+  if (Number_of_terms_of_vector_v == 3) {
+    Number_of_attempts_allowed = 7;
+  }
+  if (Number_of_terms_of_vector_v == 4) {
+    Number_of_attempts_allowed = 10;
+  }
 }
 
 int main() {
@@ -138,7 +144,7 @@ int main() {
         Number_of_attempts_allowed = 7; //declare max number of attempt if input grid is 3
         }
         else {
-          Number_of_attempts_allowed = 11;
+          Number_of_attempts_allowed = 10;
         }
       }
       //run the 'guessing random number' game

@@ -14,34 +14,6 @@ vector<int>numbers_guessed_right;
 
 int Number_of_attempts_allowed;
 
-vector<int> processed(vector<int> remaining_numbers_not_guessed, vector<int> numbers_already_guessed) {
-  // delete items in the vector 'numbers_already_guessed' from the vector 'remaining_numbers_not_guessed'
-  int number_of_numbers_already_guessed = numbers_already_guessed.size();
-  if (number_of_numbers_already_guessed == 0) {
-    remaining_numbers_not_guessed = remaining_numbers_not_guessed;
-  }
-  
-  if (number_of_numbers_already_guessed != 0) {
-          int A=0;
-          vector<int>::iterator B = remaining_numbers_not_guessed.begin();
-          int item_to_be_deleted;
-          while (A < numbers_already_guessed.size()) {
-            item_to_be_deleted = numbers_already_guessed[A];
-            while (B != remaining_numbers_not_guessed.end()) {
-              if (*B == item_to_be_deleted) {
-                B++;
-                remaining_numbers_not_guessed.erase(B - 1);
-                B--;
-              }
-              B++;
-            }
-            B = remaining_numbers_not_guessed.begin();
-            A++;
-          }
-        }
-  return remaining_numbers_not_guessed;
-}
-
 void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, int Number_of_attempts_allowed, int Number_of_terms_of_vector_v) {
   int X=remaining_numbers_not_guessed.size();
   if (X == 0) {
@@ -127,6 +99,7 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
   if (is_guessed_correctly = false) {
     cout << "I am so sorry that you can't make the miracle. You still cannot guess the correct number. \nBut I believe that you will be luckier in the future." << endl;
   }
+  remaining_numbers_not_guessed.erase(index_of_number_to_be_guessed_in_the_remaining_numbers_list);
 }
 
 int main() {
@@ -151,28 +124,22 @@ int main() {
       int Number_of_terms_of_vector_v; //Decide either 3*3 or 4*4 grid
       cout << "Input '3' to have a 3x3 bingo board or '4' to have a 4x4 bingo board" << endl;
       cin >> Number_of_terms_of_vector_v;
-      if (Number_of_terms_of_vector_v == 3) {
-        int a=0;
-        while (a<Number_of_terms_of_vector_v * Number_of_terms_of_vector_v) {
-          b = a + 1;
-          remaining_numbers_not_guessed.push_back(b);
-        }
-        remaining_numbers_not_guessed = processed(remaining_numbers_not_guessed, numbers_already_guessed);
-        Number_of_attempts_allowed = 7; //declare max number of attempt if input grid is 3
-        
-      }
-      if (Number_of_terms_of_vector_v == 4) {
-        int a=0;
-        while (a<Number_of_terms_of_vector_v * Number_of_terms_of_vector_v) {
-          b = a + 1;
-          remaining_numbers_not_guessed.push_back(b);
-        }
-        remaining_numbers_not_guessed = processed(remaining_numbers_not_guessed, numbers_already_guessed);
-        Number_of_attempts_allowed = 10; //declare max number of attempt if input grid is 4
-      }
-      if (Number_of_terms_of_vector_v != 3 && Number_of_terms_of_vector_v != 4) {
-        cout << "Sorry, please input either '3' or '4' only. Thank you. " << endl;
+      while (Number_of_terms_of_vector_v != 3 && Number_of_terms_of_vector_v != 4) {
+        cout << "Sorry, we don't provide smaller or larger grids than the 3x3 and 4x4 grids. \nPlease input either '3' or '4' only. Thank you. " << endl;
         cin >> Number_of_terms_of_vector_v;
+      }
+      if (Number_of_terms_of_vector_v == 3 || Number_of_terms_of_vector_v == 4) {
+        int a=0;
+        while (a < Number_of_terms_of_vector_v ** 2) {
+          b = a + 1;
+          remaining_numbers_not_guessed.push_back(b);
+        }
+        if (Number_of_terms_of_vector_v == 3) {
+        Number_of_attempts_allowed = 7; //declare max number of attempt if input grid is 3
+        }
+        else {
+          Number_of_attempts_allowed = 11;
+        }
       }
       //run the 'guessing random number' game
       run_guessing_random_number_game(remaining_numbers_not_guessed, Number_of_attempts_allowed, Number_of_terms_of_vector_v); 

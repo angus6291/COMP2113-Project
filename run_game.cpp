@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include " "
+#include "run_game.h"
 using namespace std;
 
 void output(int Number_of_terms_of_vector_v) {

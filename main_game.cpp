@@ -61,7 +61,7 @@ int main() {
       cin >> Number_of_terms_of_vector_v;
       if (Number_of_terms_of_vector_v == 3) {
         int a=0;
-        while (a<Number_of_terms_of_vector_v * Number_of_terms_of_vector_v) {
+        while (a<Number_of_terms_of_vector_v^2) {
           b = a + 1;
           remaining_numbers_not_guessed.push_back(b);
         }
@@ -71,7 +71,7 @@ int main() {
       }
       if (Number_of_terms_of_vector_v == 4) {
         int a=0;
-        while (a<Number_of_terms_of_vector_v * Number_of_terms_of_vector_v) {
+        while (a<Number_of_terms_of_vector_v^2) {
           b = a + 1;
           remaining_numbers_not_guessed.push_back(b);
         }

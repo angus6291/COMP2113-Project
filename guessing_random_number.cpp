@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "run_game.h"
+#include "guessing_random_number.h"
 using namespace std;
 
 void output(int Number_of_terms_of_vector_v) {

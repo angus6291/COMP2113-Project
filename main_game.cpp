@@ -8,15 +8,15 @@ using namespace std;
 
 vector<int>remaining_numbers_not_guessed;
 
-vector<int>numbers_already_guessed;
-
 vector<int>numbers_guessed_right;
+
+vector<int>numbers_guessed_wrong;
 
 int Number_of_attempts_allowed;
 
 void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, int Number_of_attempts_allowed, int Number_of_terms_of_vector_v) {
   int X=remaining_numbers_not_guessed.size();
-  if (X == 0) {
+  if (X <= 2) {
     break;
   }
   srand(time(NULL)); // initialize the seed for rand()
@@ -28,7 +28,7 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
   int guess;
   while (remaining_number_of_attempts_allowed > 0) {
     if (Number_of_terms_of_vector_v == 3) {
-      cout << "Please make a guess (1 - 9). ";
+      cout << "Please make a guess (1 - 9). Press any number smaller than 1 or greater than 9 to save the progress of the bingo board before playing this round of 'guessing random number' game.\n";
       if (remaining_number_of_attempts_allowed == Number_of_attempts_allowed) {
       cout << "You have " << remaining_number_of_attempts_allowed << " chances left. Wish you all the best. Good luck! \n";
     }
@@ -67,6 +67,19 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
     
     cin >> guess;
     
+    if (guess < 1 || guess > Number_of_terms_of_vector_v ** 2) {
+      cout << "The 'guessing random number' game session is interrupted. The required progress is saved.";
+      if (Number_of_terms_of_vector_v == 3) {
+      remaining_number_of_attempts_allowed = 7;
+      }
+      else {
+        remaining_number_of_attempts_allowed = 10;
+      }
+      // pass the bingo board, int remaining_number_of_attempts_allowed, vector remaining_numbers_not_guessed, vector numbers_guessed_right, vector numbers_guessed_wrong to Savefile.txt
+      break;
+    }
+    }
+    
     if (guess == number_to_be_guessed) {
       is_guessed_correctly = true;
       numbers_guessed_right.push_back(number_to_be_guessed);
@@ -92,11 +105,12 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
       }
       break;
       }
-    if (guess != number_to_be_guessed) {
+    if (guess != number_to_be_guessed && guess >= 1 && guess <= Number_of_terms_of_vector_v ** 2) {
     remaining_number_of_attempts_allowed--;
     }
   }
   if (is_guessed_correctly = false) {
+    numbers_guessed_wrong.push_back(number_to_be_guessed);
     cout << "I am so sorry that you can't make the miracle. You still cannot guess the correct number. \nBut I believe that you will be luckier in the future." << endl;
   }
   remaining_numbers_not_guessed.erase(index_of_number_to_be_guessed_in_the_remaining_numbers_list);
@@ -160,6 +174,5 @@ int main() {
       exit(1);
     }
 
-    cout << "This is the end of the game, see u!!" << endl;
     return 0;
 }

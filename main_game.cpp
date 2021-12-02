@@ -7,9 +7,33 @@
 #include "guessing_random_number.h"
 using namespace std;
 
-void check_bingo(vector<int> numbers_guessed_right) {
-	
-	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1)) {
+bool check_bingo(vector<int> numbers_guessed_right) { // called only if numbers_already_guessed.size() > 3
+	if (numbers_guessed_right.size() < 3) {
+		return false;
+}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 2) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 4) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 7)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 2) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 8)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 7)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 6) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
+		return true;
 	}
 }
 

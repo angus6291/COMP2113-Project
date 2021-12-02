@@ -14,13 +14,16 @@ bool check_bingo(vector<int> numbers_guessed_right) { // called only if numbers_
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 2) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3)) {
 		return true;
 	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 4) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 6)) {
+		return true;
+	}
+	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 7) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 8) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9)) {
+		return true;
+	}
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
 		return true;
 	}
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 4) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 7)) {
-		return true;
-	}
-	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
 		return true;
 	}
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 2) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 8)) {
@@ -32,13 +35,39 @@ bool check_bingo(vector<int> numbers_guessed_right) { // called only if numbers_
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 6) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9)) {
 		return true;
 	}
-	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 5)) {
-		return true;
-	}
+	
 }
 
-void save(remaining_numbers_not_guessed, numbers_guessed_right, numbers_guessed_wrong, Number_of_terms_of_vector_v, Number_of_attempts_allowed) {
+void save(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, int Number_of_terms_of_vector_v, int Number_of_attempts_allowed) {
 	//output to "Savefile.txt"
+	ofstream fout("Savefile.txt");
+	fout << "remaining_numbers_not_guessed ";
+	for (int x=0; x < remaining_numbers_not_guessed.size(); x++) {
+		if (x < remaining_numbers_not_guessed.size() - 1) {
+			fout << remaining_numbers_not_guessed[x] << " ";
+		}
+		if (x == remaining_numbers_not_guessed.size() - 1) {
+			fout << remaining_numbers_not_guessed[x] << " " << 0 << endl;
+		}
+	}
+	for (int y=0; y < numbers_guessed_right.size(); y++) {
+		if (y < numbers_guessed_right.size() - 1) {
+			fout << numbers_guessed_right[y] << " ";
+		}
+		if (y == numbers_guessed_right.size() - 1) {
+			fout << numbers_guessed_right[y] << " " << 0 << endl;
+		}
+	}
+	for (int z=0; z < numbers_guessed_wrong.size(); z++) {
+		if (z < numbers_guessed_right.size() - 1) {
+			fout << numbers_guessed_right[y] << " ";
+		}
+		if (y == numbers_guessed_right.size() - 1) {
+			fout << numbers_guessed_right[y] << " " << 0 << endl;
+		}
+	}
+	fout << Number_of_terms_of_vector_v << endl;
+	fout << Number_of_attempts_allowed;
 }
 
 void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_v, vector<int>remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, bool bingo) {

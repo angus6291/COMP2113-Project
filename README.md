@@ -14,7 +14,7 @@ The grid size of the 'bingo' board will be 3x3 or 4x4 (if the grid size includes
 
 A player will need to choose the grid size first (by inputting character '3' or character '4'), and then play a round of the game 'guessing random number'. (If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.) If the player enters other integers, the player will be asked to re-enter the input to choose the grid size again. When playing the game of 'guessing random number', if the player has chosen 3x3 grid, the player will have 7 chances to guess the number. If the player has chosen 4x4 grid, the player will have 12 chances. (WARNING: YOU CANNOT SAVE YOUR PROGRESS OF THE 'GUESSING RANDOM NUMBER' GAME.) 
 
-If the player chooses 3x3 grid, a vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. If the player chooses 4x4 grid, vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} will be initiated.
+If the player chooses 3x3 grid, a vector v (i.e. remaining numbers that are not guessed) = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. If the player chooses 4x4 grid, vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} will be initiated.
 
 int Number_of_terms_of_vector_v = v.size();
 
@@ -22,25 +22,25 @@ int Index_of_number_to_be_guessed_in_the_vector = srand(time(NULL)) % Number_of_
 
 int Number_to_be_guessed = v[Index_of_number_to_be_guessed_in_the_vector];
 
-int Number_of_attempts_allowed = 7 (for 3x3) or 10 (for 4x4);
+int Number_of_attempts_allowed = 4 (for 3x3) or 7 (for 4x4);
 
 int Number_of_attempts_left = Number_of_attempts_allowed (will -1 for each attempts tried);
 
-int player's_input;
+int guess;
 
 In the 'guessing random number' game, if the grid size is 3x3, when the player inputs numbers smaller than 1 or larger than 9, the progress before playing this round of the game will be saved. When the saved game is loaded again, the bingo board before playing this round of game will be shown, and the player can either start a new round of the 'guessing random number' game or directly quit the main game. 
 
-When the player inputs a number (stored into variable 'player's_input'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/.../last trial, if the two numbers match:
+When the player inputs a number (stored into variable 'guess'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/.../last trial, if the two numbers match:
 
-1. print out 'Yeah! this is the number we want!'
+1. print out messages of successfully guessing the correct number, depending on the no. of chances used to successfully guess the number.
 
-2. then the position of the number on the bingo board will become "O". The bingo board wll be shown, and the number will be removed from the vector v.
+2. the position of the number on the bingo board will become "O". The bingo board wll be shown, and the number will be removed from the vector v.
 
 3. the player can press character "C" (or character "c") to continue, "S" (or character "s") to save, and "Q" (or character "q") to quit. Only "C", "c", "S", "s", "Q" and "q" will be sensed by the computer.
 
 If the number is not guessed successfully:
 
-1. print out 'Sorry, you still haven't guesses successfully the number we want.'
+1. print out messages of failing to guess the correct number.
 
 2. the position of the number on the bingo board will become "X". The bingo board wll be shown, and the number will be removed from the vector v.
 

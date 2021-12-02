@@ -1,13 +1,16 @@
 CPP = g++
 FLAGS = -pedantic-errors -std=c++11
 
-main: main.o run_game.o
-  $(CPP) main.o run_game.o -o main
+main: main_game.o guessing_random_number.o
+  $(CPP) main_game.o guessing_random_number.o -o main
 
 .PHONY: clean
-clean: main.o run_game.o main
+clean: main_game.o guessing_random_number.o main
   rm *.o
   rm main
   
-main.o: main.cpp run_game.h
+main_game.o: main_game.cpp guessing_random_number.h
   $(CPP) $(FLAGS) -c main.cpp
+
+guessing_random_number.o: guessing_random_number.cpp guessing_random_number.h
+  $(CPP) $(FLAGS) -c guessing_random_number.cpp

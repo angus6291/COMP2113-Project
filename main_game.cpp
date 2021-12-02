@@ -153,12 +153,34 @@ void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_
     i++;
   }
 	bingo = check_bingo(numbers_guessed_right);
-	if (bingo == true) {
-		cout << "Congratulations that you have made a bingo!!! You can enter 'N' to start a new game or 'Q' to quit the game.\n";
-		
+	if (bingo == true || (bingo == false && remaining_numbers_not_guessed.size() == 0)) {
+		if (bingo == true) {cout << "Congratulations that you have made a bingo!!! You can enter 'N' to start a new game or 'Q' to quit the game.\n";}
+		if (bingo == false && remaining_numbers_not_guessed.size() == 0) {cout << "I am sorry that you have lost the game. You can enter 'N' to start a new game or 'Q' to quit the game.\n";}
+		char command;
+		if (toupper(command) == 'Q') {
+			cout << "Thank you for playing the game. Bye!\n";
+			exit(1);
+		}
+		if (toupper(command) == 'N') {
+			return main();
+		}
 	}
+	
 	if (bingo == false && remaining_numbers_not_guessed.size() > 2){
-		cout << "You have already attempted to guess " << remaining_numbers_not_guessed.size() << " numbers in total.\nYou have already guessed correctly " << numbers_guessed_right.size() << " numbers and guessed wrongly " << numbers_guessed_wrong.size() << " numbers.\nEnter 'S' to save the current progress, 'Q' to quit, or 'N' to start a new game again."
+		cout << "You have already attempted to guess " << remaining_numbers_not_guessed.size() << " numbers in total.\nYou have already guessed correctly " << numbers_guessed_right.size() << " numbers and guessed wrongly " << numbers_guessed_wrong.size() << " numbers.\nEnter 'S' to save the current progress, 'Q' to quit, or 'N' to start a new game again.\n"
+		char command;
+		if (toupper(command) == 'S') {
+			cout << "The game is saved.";
+			save(remaining_numbers_not_guessed, numbers_guessed_right, numbers_guessed_wrong, Number_of_terms_of_vector_v, Number_of_attempts_allowed);
+			return main();
+		}
+		if (toupper(command) == 'Q') {
+			cout << "Thank you for playing the game. Bye!\n";
+			exit(1);
+		}
+		if (toupper(command) == 'N') {
+			return main();
+		}
 	}
 	
 }
@@ -288,17 +310,17 @@ bool bingo = false;
     cout << "Enter 'L' to load the previous saved game" << endl << "Enter 'S' to start a new game" << endl;
     cout << "Enter 'Q' to quit the game" << endl;
     cin >> instruction_code;
-    while (instruction_code != 'Q') {
+    while (toupper(instruction_code) != 'Q') {
       if (instruction_code != 'L' && instruction_code != 'S') {
         cout << "Invalid input. Please enter 'L', 'S' or 'Q' to continue. " << endl;
         cin >> instruction_code;
       }
-    if (instruction_code == 'L') {
+    if (toupper(instruction_code) == 'L') {
       //to be implemented load from save
 	    load(remaining_numbers_not_guessed, numbers_guessed_right, numbers_guessed_wrong, Number_of_terms_of_vector_v, Number_of_attempts_allowed);
 	    run_guessing_random_number_game(remaining_numbers_not_guessed, Number_of_attempts_allowed, Number_of_terms_of_vector_v);
     }
-    if (instruction_code == 'S') {
+    if (toupper(instruction_code) == 'S') {
       //run new game
       cout << "Input '3' to have a 3x3 bingo board or '4' to have a 4x4 bingo board" << endl;
       cin >> Number_of_terms_of_vector_v;
@@ -328,9 +350,9 @@ bool bingo = false;
    
     }
     }
-    if (instruction_code == 'Q') {
+    if (toupper(instruction_code) == 'Q') {
       //Leave game
-      cout << "Thank you! \nSee you next time!!";
+      cout << "Thank you! See you next time!!";
       exit(1);
     }
 

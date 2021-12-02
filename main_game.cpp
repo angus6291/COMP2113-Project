@@ -12,7 +12,52 @@ vector<int>numbers_guessed_right;
 
 vector<int>numbers_guessed_wrong;
 
+int Number_of_terms_of_vector_v; // 3 or 4
+
 int Number_of_attempts_allowed;
+
+vector<string>bingo_board;
+
+bool bingo = false;
+
+void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_v, vector<int>remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong) {
+  int number_to_be_replaced;
+  if (remaining_numbers_not_guessed.size() < Number_of_terms_of_vector_v ** 2) {
+    if (numbers_guessed_right.size() != 0) {
+      int I=0;
+      while (I < numbers_guessed_right.size()) {
+        number_to_be_replaced = numbers_guessed_right[I];
+        if (bingo_board[number_to_be_replaced - 1] != "    O") {
+            bingo_board[number_to_be_replaced - 1] = "    O";
+        }
+        I++;
+      }
+    }
+    
+    if (numbers_guessed_wrong.size() != 0) {
+      int J=0;
+      while (J < numbers_guessed_right.size()) {
+        number_to_be_replaced = numbers_guessed_wrong[J];
+        if (bingo_board[number_to_be_replaced - 1] != "    X") {
+            bingo_board[number_to_be_replaced - 1] = "    X";
+        }
+        J++;
+      }
+    }
+  }
+  int i=0;
+  while (i < bingo_board.size()) {
+    if ((i + 1) % Number_of_terms_of_vector_v == 0) {
+      cout << bingo_board[i] << endl;
+    }
+    else {
+      cout << bingo_board[i];
+    }
+    i++;
+  }
+  
+  
+}
 
 void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, int Number_of_attempts_allowed, int Number_of_terms_of_vector_v) {
   int X=remaining_numbers_not_guessed.size();
@@ -70,10 +115,10 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
     if (guess < 1 || guess > Number_of_terms_of_vector_v ** 2) {
       cout << "The 'guessing random number' game session is interrupted. The required progress is saved.";
       if (Number_of_terms_of_vector_v == 3) {
-      remaining_number_of_attempts_allowed = 7;
+      remaining_number_of_attempts_allowed = 7; // reset the remaining number of attempts allowed to be 7 for 3x3 grid
       }
       else {
-        remaining_number_of_attempts_allowed = 10;
+        remaining_number_of_attempts_allowed = 10; // reset the remaining number of attempts allowed to be 10 for 4x4 grid
       }
       // pass the bingo board, int remaining_number_of_attempts_allowed, vector remaining_numbers_not_guessed, vector numbers_guessed_right, vector numbers_guessed_wrong to Savefile.txt
       break;
@@ -120,12 +165,11 @@ void run_guessing_random_number_game(vector<int> remaining_numbers_not_guessed, 
   if (Number_of_terms_of_vector_v == 4) {
     Number_of_attempts_allowed = 10;
   }
+return print_bingo_board(bingo_board, Number_of_terms_of_vector_v, remaining_numbers_not_guessed, numbers_guessed_right, numbers_guessed_wrong);
 }
 
 int main() {
   cout << "Welcome to this game! \nTry your luck and see if you are lucky or not today! \n\n"; //Welcoming
-  
-  // vector of numbers guessed wrong: no need
     // instruction code
     char instruction_code;
     cout << "Enter 'L' to load the previous saved game" << endl << "Enter 'S' to start a new game" << endl;
@@ -141,7 +185,6 @@ int main() {
     }
     if (instruction_code == 'S') {
       //run new game
-      int Number_of_terms_of_vector_v; //Decide either 3*3 or 4*4 grid
       cout << "Input '3' to have a 3x3 bingo board or '4' to have a 4x4 bingo board" << endl;
       cin >> Number_of_terms_of_vector_v;
       while (Number_of_terms_of_vector_v != 3 && Number_of_terms_of_vector_v != 4) {
@@ -156,16 +199,18 @@ int main() {
         }
         if (Number_of_terms_of_vector_v == 3) {
         Number_of_attempts_allowed = 7; //declare max number of attempt if input grid is 3
+        bingo_board = ["    1", "    2", "    3", "    4", "    5", "    6", "    7", "    8", "    9"];
+        
         }
         else {
           Number_of_attempts_allowed = 10;
+          bingo_board = ["    1", "    2", "    3", "    4", "    5", "    6", "    7", "    8", "    9", "   10", "   11", "   12", "   13", "   14", "   15", "   16"];
+          
         }
       }
-      //run the 'guessing random number' game
+      //run the 'guessing random number' game (another function is called in the same function to print the bingo board)
       run_guessing_random_number_game(remaining_numbers_not_guessed, Number_of_attempts_allowed, Number_of_terms_of_vector_v); 
-      
-      //load bingo board
-      
+   
     }
     }
     if (instruction_code == 'Q') {

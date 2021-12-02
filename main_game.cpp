@@ -50,6 +50,8 @@ void save(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed
 			fout << remaining_numbers_not_guessed[x] << " " << 0 << endl;
 		}
 	}
+	
+	fout << "numbers_guessed_right ";
 	for (int y=0; y < numbers_guessed_right.size(); y++) {
 		if (y < numbers_guessed_right.size() - 1) {
 			fout << numbers_guessed_right[y] << " ";
@@ -58,6 +60,7 @@ void save(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed
 			fout << numbers_guessed_right[y] << " " << 0 << endl;
 		}
 	}
+	fout << "numbers_guessed_wrong ";
 	for (int z=0; z < numbers_guessed_wrong.size(); z++) {
 		if (z < numbers_guessed_right.size() - 1) {
 			fout << numbers_guessed_right[y] << " ";
@@ -66,8 +69,49 @@ void save(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed
 			fout << numbers_guessed_right[y] << " " << 0 << endl;
 		}
 	}
-	fout << Number_of_terms_of_vector_v << endl;
-	fout << Number_of_attempts_allowed;
+	fout << "#" << endl << Number_of_terms_of_vector_v << " " << Number_of_attempts_allowed;
+	fout.close();
+	remaining_numbers_not_guessed.clear();
+	numbers_guessed_right.clear();
+	numbers_guessed_wrong.clear();
+	Number_of_terms_of_vector_v = 0;
+	Number_of_attempts_allowed = 0;
+}
+
+void load(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, int Number_of_terms_of_vector_v, int Number_of_attempts_allowed) {
+	ifstream fin("Savefile.txt");
+	string vector_list_to_be_loaded;
+	int item_to_be_loaded_into_the_list;
+	fin >> vector_list_to_be_loaded;
+	while (vector_list_to_be_loaded != "#") {
+		if (vector_list_to_be_loaded == "remaining_numbers_not_guessed") {
+			fin >> item_to_be_loaded_into_the_list;
+			while (item_to_be_loaded_into_the_list != 0) {
+				remaining_numbers_not_guessed.push_back(item_to_be_loaded_into_the_list);
+				fin >> item_to_be_loaded_into_the_list;
+			}
+		}
+		
+		if (vector_list_to_be_loaded == "numbers_guessed_right") {
+			fin >> item_to_be_loaded_into_the_list;
+			while (item_to_be_loaded_into_the_list != 0) {
+				numbers_guessed_right.push_back(item_to_be_loaded_into_the_list);
+				fin >> item_to_be_loaded_into_the_list;
+			}
+		}
+		
+		if (vector_list_to_be_loaded == "numbers_guessed_wrong") {
+			fin >> item_to_be_loaded_into_the_list;
+			while (item_to_be_loaded_into_the_list != 0) {
+				numbers_guessed_wrong.push_back(item_to_be_loaded_into_the_list);
+				fin >> item_to_be_loaded_into_the_list;
+			}
+		}
+		
+		fin >> vector_list_to_be_loaded;
+	}
+	fin >> Number_of_terms_of_vector_v >> Number_of_attempts_allowed;
+	fin.close();
 }
 
 void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_v, vector<int>remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, bool bingo) {
@@ -100,7 +144,7 @@ void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_
   int i=0;
 	
   while (i < bingo_board.size()) {
-    if ((i + 1) % Number_of_terms_of_vector_v == 0) {
+    if ((i + 1) % Number_of_terms_of_vector_v == 0) { // when Number_of_terms_of_vector_v = 3, i = 2 or 5 or 8 such that can directly jump to this branch; when Number_of_terms_of_vector_v = 4, i = 3 or 7 or 11 or 15 such that can directly jump to this branch
       cout << bingo_board[i] << endl;
     }
     else {
@@ -108,8 +152,12 @@ void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_
     }
     i++;
   }
-	
-	if (bingo = false && remaining_numbers_not_guessed.size() > 2){
+	bingo = check_bingo(numbers_guessed_right);
+	if (bingo == true) {
+		cout << "Congratulations that you have made a bingo!!! You can enter 'N' to start a new game or 'Q' to quit the game.\n";
+		
+	}
+	if (bingo == false && remaining_numbers_not_guessed.size() > 2){
 		cout << "You have already attempted to guess " << remaining_numbers_not_guessed.size() << " numbers in total.\nYou have already guessed correctly " << numbers_guessed_right.size() << " numbers and guessed wrongly " << numbers_guessed_wrong.size() << " numbers.\nEnter 'S' to save the current progress, 'Q' to quit, or 'N' to start a new game again."
 	}
 	
@@ -247,6 +295,8 @@ bool bingo = false;
       }
     if (instruction_code == 'L') {
       //to be implemented load from save
+	    load(remaining_numbers_not_guessed, numbers_guessed_right, numbers_guessed_wrong, Number_of_terms_of_vector_v, Number_of_attempts_allowed);
+	    run_guessing_random_number_game(remaining_numbers_not_guessed, Number_of_attempts_allowed, Number_of_terms_of_vector_v);
     }
     if (instruction_code == 'S') {
       //run new game

@@ -10,7 +10,7 @@ using namespace std;
 bool check_bingo(vector<int> numbers_guessed_right) { // called only if numbers_already_guessed.size() > 3
 	if (numbers_guessed_right.size() < 3) {
 		return false;
-}
+	}
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 1) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 2) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3)) {
 		return true;
 	}
@@ -35,7 +35,9 @@ bool check_bingo(vector<int> numbers_guessed_right) { // called only if numbers_
 	if (count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 3) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 6) && count(numbers_guessed_right.begin(), numbers_guessed_right.end(), 9)) {
 		return true;
 	}
-	
+	else {
+		return false;
+	}
 }
 
 void save(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, int Number_of_terms_of_vector_v, int Number_of_attempts_allowed) {

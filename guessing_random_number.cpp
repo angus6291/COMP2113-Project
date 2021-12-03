@@ -4,9 +4,10 @@
 #include <string>
 #include <vector>
 #include "guessing_random_number.h"
+#include "run.h"
 using namespace std;
 
-void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& out_put) { // only run once
+void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out_put) { // only run once
      //showing the pre-any in-put bingo board
       cout << "Your current status: (New Game Version) " << endl;
       for (int i = 0; i<9; i=i+3) {
@@ -31,7 +32,7 @@ void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& o
         cin >> node_input;
         int max_guessing_chance = 3;
         int node_conversion = int(node_input) - int('A');
-        if (run(to_be_guessed, max_guessing_chance, node_conversion)) {out_put[node_conversion] = 'O';}
+        if (run(to_be_guessed, max_guessing_chance, node_conversion) == true) {out_put[node_conversion] = 'O';}
         else {out_put[node_conversion] = 'X';}
         cout << "Your updated grid: " << endl;
         for (int i = 0; i<9; i=i+3) {

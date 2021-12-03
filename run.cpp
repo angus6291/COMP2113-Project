@@ -4,14 +4,16 @@
 #include <string>
 #include <iterator>
 #include <vector>
+#include <cstdlib> // for srand(), rand()
 #include <algorithm>
 #include "run.h"
 using namespace std;
 
 int run(vector<int>& to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
   int correct_ans = to_be_guessed[node_conversion];
-  cout << "You have only 4 chances. Good Luck." << endl;
-  int i=4;
+  srand(time(NULL));
+  int i = 2 + (rand()%5);
+  cout << "You have only " << i << " chances to ant interger between 1-9. Good Luck." << endl;
   while (i>0) {
     int user_input_for_node;
     cin >> user_input_for_node;

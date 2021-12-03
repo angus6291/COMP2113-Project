@@ -27,7 +27,7 @@ bool run(vector<int> to_be_guessed, int node_conversion) { // return true if gue
   }
   
   if (i==0) {
-  cout << "I am sorry that your chances are used up and you still haven't guessed the right letter. " << endl;
+  cout << "I am sorry that your chances are used up. You still haven't guessed the right letter. " << endl;
   return false;
 }
 }

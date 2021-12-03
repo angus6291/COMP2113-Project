@@ -121,9 +121,11 @@ int main() {
       cout << "Thank you continuing the game, previously saved progress in " << endl;
       // run new to_be_guessed anyway
       srand(time(NULL));
+      srand(time(NULL));
       for (int i=0; i<9; i++) {
         int a = 1 + (rand()%9);
-        to_be_guessed.push_back(a); }
+        to_be_guessed[i] = a;
+      }
 
         //showing the pre-any in-put grid
         cout << "Your current status: (New Game Version) " << endl;

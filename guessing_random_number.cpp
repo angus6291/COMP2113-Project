@@ -4,6 +4,7 @@
 #include <string>
 #include <iterator>
 #include <vector>
+#include <algorithm>
 #include "guessing_random_number.h"
 using namespace std;
 

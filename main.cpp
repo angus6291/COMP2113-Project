@@ -59,6 +59,7 @@ void load(vector<int>& to_be_guessed, vector<char>& out_put) {
 		}
     
     fin >> vector_list_to_be_loaded;
+  }
     fin.close();
 }
   

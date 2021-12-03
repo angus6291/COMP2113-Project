@@ -48,35 +48,27 @@ void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out
       //result checking
       if (out_put[0] == 'O' && out_put[3] == 'O' && out_put[6] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       else if (out_put[1] == 'O' && out_put[4] == 'O' && out_put[7] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       else if (out_put[2] == 'O' && out_put[5] == 'O' && out_put[8] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       if (out_put[0] == 'O' && out_put[1] == 'O' && out_put[2] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       if (out_put[3] == 'O' && out_put[4] == 'O' && out_put[5] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       if (out_put[6] == 'O' && out_put[7] == 'O' && out_put[8] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       if (out_put[0] == 'O' && out_put[4] == 'O' && out_put[8] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       if (out_put[2] == 'O' && out_put[4] == 'O' && out_put[7] == 'O') {
         cout << "Congrats u got one or more than one bingo" << endl;
-        break;
       }
       }
 

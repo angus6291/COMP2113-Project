@@ -8,7 +8,7 @@
 #include "run.h"
 using namespace std;
 
-bool run(const vector<int>& to_be_guessed, int max_guessing_chance, int node_conversion) {
+bool run(vector<int>& to_be_guessed, int max_guessing_chance, int node_conversion) {
   int correct_ans = to_be_guessed[node_coversion];
   cout << "Your maximum guessing chances: " << max_guessing_chance << ". Good Luck." << endl;
   for (i=1; max_guessing_chance>=i; i++) {

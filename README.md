@@ -10,11 +10,11 @@ Tentative name of the game: 'Try your luck'
 
 Concept: mixing 'guessing random number' and 'bingo' games
 
-The grid size of the 'bingo' board will be 3x3 or 4x4 (if the grid size includes 5x5, we are afraid the game will take too long).
+The grid of the 'bingo' board will be a 3x3 grid (if 4x4, 5x5 or larger grid sizes are included, we are afraid the game will take too long).
 
-A player will need to choose the grid size first (by inputting character '3' or character '4'), and then play a round of the game 'guessing random number'. (If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.) If the player enters other integers, the player will be asked to re-enter the input to choose the grid size again. When playing the game of 'guessing random number', if the player has chosen 3x3 grid, the player will have 7 chances to guess the number. If the player has chosen 4x4 grid, the player will have 12 chances. (WARNING: YOU CANNOT SAVE YOUR PROGRESS OF THE 'GUESSING RANDOM NUMBER' GAME.) 
+A player will need to press 'N' to start the main game. (If the player has already had a game playing beforehand, press 'L' then the saved game will be reloaded.) If the player enters other integers, the player will be asked to re-enter the input to choose the grid size again. When playing the game of 'guessing random number', if the player has chosen 3x3 grid, the player will have 7 chances to guess the number. If the player has chosen 4x4 grid, the player will have 12 chances. (WARNING: YOU CANNOT SAVE YOUR PROGRESS OF THE 'GUESSING RANDOM NUMBER' GAME.) 
 
-If the player chooses 3x3 grid, a vector v (i.e. remaining numbers that are not guessed) = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. If the player chooses 4x4 grid, vector v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16} will be initiated.
+A vector v (i.e. remaining numbers that are not guessed) = {1, 2, 3, 4, 5, 6, 7, 8, 9} will be initiated. 
 
 int Number_of_terms_of_vector_v = v.size();
 
@@ -28,7 +28,7 @@ int Number_of_attempts_left = Number_of_attempts_allowed (will -1 for each attem
 
 int guess;
 
-In the 'guessing random number' game, if the grid size is 3x3, when the player inputs numbers smaller than 1 or larger than 9, the progress before playing this round of the game will be saved. When the saved game is loaded again, the bingo board before playing this round of game will be shown, and the player can either start a new round of the 'guessing random number' game or directly quit the main game. 
+In the session of the 'guessing random number' game, if the grid size is 3x3, when the player inputs numbers smaller than 1 or larger than 9, the progress before playing this round of the game will be saved. When the saved game is loaded again, the bingo board before playing this round of game will be shown, and the player can either start a new round of the 'guessing random number' game or directly quit the main game. 
 
 When the player inputs a number (stored into variable 'guess'), the player's_input in the vector will be compared to Number_to_be_guessed. At the 1st/2nd/3rd/.../last trial, if the two numbers match:
 
@@ -55,13 +55,13 @@ Code requirement 1: Generation of random game sets or events
 
 When the player entered the game, they have to guess the correct number. The index of the 'correct number' is generated from srand(time(NULL)) % Number_of_terms_of_vector_v, and vector v is the set of integers from 1 to 9, so the correct number is a random integer from 1-9, and it is guaranteed that the player does not guess a number that has already been guessed before, because no matter whether the player guesses a 'correct number' or not in a round of 'guessing number' game, the 'correct number' of the round will be opted out from the vector v after the round ends.
 
-Initially Number_of_terms_of_vector_v = v.size() is 9 for 3x3 grid, and Number_of_terms_of_vector_v = v.size() is 16 for 4x4 grid.
+Initially Number_of_terms_of_vector_v = v.size() is 9 for the 3x3 grid.
 
 If you are playing 3x3 grid size, you will have to pick a random number from 1-9 to test within 7 trials whether it meets with the correct number which is generated randomly. For 4x4 grid, you will need to do the same but the range increase to 1-16, and you are given 12 trials.
 
 Code requirement 2: Data structures for storing game status
 
-We will ultilise vector for storing the number to be guessed for each box in the grid boxes, which will be refreshed every play. Meanwhile we will set up another vector for storing the output (bingo board) for sotring the "O" and "X", which a further function would be used to evaluate after the completion of all boxes, whether there are 3 (for 3x3) or 4 (for 4x4) consecutive (colinear) "O" vertically, horizontally or diagonally, if TRUE, then will output "YOU WIN!!!", else output "YOU LOSS, pls retry :("
+We will ultilise vector for storing the number to be guessed for each box in the grid boxes, which will be refreshed every play. Meanwhile we will set up another vector for storing the output (bingo board) for sotring the "O" and "X", which a further function would be used to evaluate after the completion of all boxes, whether there are 3 (for 3x3) or 4 (for 4x4) consecutive (colinear) "O" vertically, horizontally or diagonally, if TRUE, then will output messages similar to "YOU WIN!!!", else output messages similar to "YOU LOSE, pls retry :("
 
 Code requirement 3: Dynamic memory management
 

@@ -8,7 +8,7 @@
 #include "run.h"
 using namespace std;
 
-bool run(vector<int>& to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
+bool run(vector<int> to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
   int correct_ans = to_be_guessed[node_coversion];
   cout << "You have only 3 chances". Good Luck." << endl;
   int i=3;

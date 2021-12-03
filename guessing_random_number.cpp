@@ -2,6 +2,7 @@
 //bingo board: only 3x3 bingo board
 #include <iostream>
 #include <string>
+#include <iterator>
 #include <vector>
 #include "guessing_random_number.h"
 #include "run.h"

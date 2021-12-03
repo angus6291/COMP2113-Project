@@ -6,7 +6,6 @@
 #include <cstdlib> // for srand(), rand()
 #include <algorithm>
 #include "guessing_random_number.h"
-#include "run.h"
 using namespace std;
 
 void save(vector<int>& to_be_guessed, vector<char>& out_put) {

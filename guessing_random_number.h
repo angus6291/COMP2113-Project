@@ -4,4 +4,5 @@
 
 bool run(vector<int> to_be_guessed, int node_conversion);
 void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out_put);
+
 #endif

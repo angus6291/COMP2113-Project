@@ -42,18 +42,18 @@ void load(vector<int>& to_be_guessed, vector<char>& out_put) {
 	int item_to_be_loaded_into_the_list;
 	fin >> vector_list_to_be_loaded;
   while (vector_list_to_be_loaded != "#") {
-		if (vector_list_to_be_loaded == "remaining_numbers_not_guessed") {
+		if (vector_list_to_be_loaded == "to_be_guessed") {
 			fin >> item_to_be_loaded_into_the_list;
 			while (item_to_be_loaded_into_the_list != 0) {
-				remaining_numbers_not_guessed.push_back(item_to_be_loaded_into_the_list);
+				to_be_guessed.push_back(item_to_be_loaded_into_the_list);
 				fin >> item_to_be_loaded_into_the_list;
 			}
 		}
 		
-		if (vector_list_to_be_loaded == "numbers_guessed_right") {
+		if (vector_list_to_be_loaded == "out_put") {
 			fin >> item_to_be_loaded_into_the_list;
 			while (item_to_be_loaded_into_the_list != 0) {
-				numbers_guessed_right.push_back(item_to_be_loaded_into_the_list);
+				out_put.push_back(item_to_be_loaded_into_the_list);
 				fin >> item_to_be_loaded_into_the_list;
 			}
 		}
@@ -62,24 +62,12 @@ void load(vector<int>& to_be_guessed, vector<char>& out_put) {
     fin.close();
 }
   
-void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& out_put) {
-  srand(time(NULL));
-  for (int i=0; i<9; i++) {
-    int a = 1 + (rand()%9);
-    to_be_guessed[i] = a;
-  }
-      // initiate out_put
-      char temp_in_put = 'A'
-      for (int i = 0; i<9 ; i++) {
-        out_put[i] = temp_in_put;
-        temp_in_put++;
-      }
-
-      //showing the pre-any in-put grid
+void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& out_put) { // only run once
+     //showing the pre-any in-put bingo board
       cout << "Your current status: (New Game Version) " << endl;
       for (int i = 0; i<9; i=i+3) {
         for (int a = 0; a<3; a++) {
-          cout << out_put[i+a] << " ";
+          cout << out_put[i+a] << "   ";
         }
         cout << endl;
       }
@@ -95,7 +83,7 @@ void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& o
       int number_of_node_available = number_of_node_guessed;
       while (number_of_node_available>0) {
         char node_input;
-        cout << "Please choose a location 'A-I' for the guessing, please don't pick either 'X':wrong or 'O':correct, as those are your result. " << endl;
+        cout << "Please input letters from A to I for the guessing. Do not pick either 'X' (wrong) or 'O' (correct), as those are your result. " << endl;
         cin >> node_input;
         int max_guessing_chance = 3;
         int node_conversion = int(node_input) - int('A');
@@ -164,7 +152,14 @@ int main() {
       // start game
         cout << "Thank you for starting a new game! Here we go! " << endl;
       // initiate to_be_guessed
-        run_guessing_random_number_game(to_be_guessed, out_put);
+	srand(time(NULL));
+  	for (int i=0; i<9; i++) {
+    	int a = 1 + (rand()%9);
+    	to_be_guessed[i] = a;
+  }
+      // initiate out_put
+      out_put = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
+      run_guessing_random_number_game(to_be_guessed, out_put);
     }
 
       if (toupper(instruction_code) == 'L') {

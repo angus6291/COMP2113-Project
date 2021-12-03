@@ -1,6 +1,5 @@
-//for running the game and output status per every guess
-//first of all seperate into either 3*3 or 4*4
-//vector will be set for dynamic storage
+//guessing_random_number.cpp
+//bingo board: only 3x3 bingo board
 #include <iostream>
 #include <string>
 #include <vector>

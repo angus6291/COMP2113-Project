@@ -82,7 +82,7 @@ void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out
 
 bool run(vector<int> to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
   int correct_ans = to_be_guessed[node_coversion];
-  cout << "You have only 3 chances". Good Luck." << endl;
+  cout << "You have only 3 chances. Good Luck." << endl;
   int i=3;
   while (i>0) {
     int user_input_for_node;

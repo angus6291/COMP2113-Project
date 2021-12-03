@@ -120,13 +120,12 @@ void load(vector<int> remaining_numbers_not_guessed, vector<int> numbers_guessed
 	if (Number_of_terms_of_vector_v == 3) {
         Number_of_attempts_allowed = 7; //declare max number of attempt if input grid is 3
         bingo_board = {"    1", "    2", "    3", "    4", "    5", "    6", "    7", "    8", "    9"};
-        
         }
         if (Number_of_terms_of_vector_v == 4) {
           Number_of_attempts_allowed = 10;
           bingo_board = {"    1", "    2", "    3", "    4", "    5", "    6", "    7", "    8", "    9", "   10", "   11", "   12", "   13", "   14", "   15", "   16"};
-          
         }
+	return print_bingo_board;
 }
 
 void print_bingo_board(vector<string>bingo_board, int Number_of_terms_of_vector_v, vector<int>remaining_numbers_not_guessed, vector<int> numbers_guessed_right, vector<int> numbers_guessed_wrong, bool bingo) {

@@ -9,7 +9,7 @@
 using namespace std;
 
 void save(vector<int>& to_be_guessed, vector<char>& out_put) {
-  ofstream fout("Savefile.txt");
+  ofstream fout("Savefile.txt", ofstream::out | ofstream::trunc);
   fout << "to_be_guessed ";
   for (int x=0; x < to_be_guessed.size(); x++) {
 		if (x < to_be_guessed.size() - 1) {
@@ -95,17 +95,13 @@ void run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& o
       int number_of_node_available = number_of_node_guessed;
       while (number_of_node_available>0) {
         char node_input;
-        cout << "Please choose a location 'A-I' for the guessing, please don't pick either 'X':wrong or 'O':correct as those are your result. " << endl;
+        cout << "Please choose a location 'A-I' for the guessing, please don't pick either 'X':wrong or 'O':correct, as those are your result. " << endl;
         cin >> node_input;
-        srand(time(NULL));
-        int max_guessing_chance = 1 + (rand()%9);
+        int max_guessing_chance = 3;
         int node_conversion = int(node_input) - int('A');
-        if (run(to_be_guessed, max_guessing_chance, node_conversion)) {
-          out_put[node_conversion] = 'O'; }
-        else {
-          out_put[node_conversion] = 'X';
-        }
-        cout << "Updates of your grid: " << endl;
+        if (run(to_be_guessed, max_guessing_chance, node_conversion)) {out_put[node_conversion] = 'O';}
+        else {out_put[node_conversion] = 'X';}
+        cout << "Your updated grid: " << endl;
         for (int i = 0; i<9; i=i+3) {
           for (int a = 0; a<3; a++) {
             cout << out_put[i+a] << " ";

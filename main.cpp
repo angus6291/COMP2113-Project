@@ -121,7 +121,6 @@ int main() {
       cout << "Thank you continuing the game, previously saved progress in " << endl;
       // run new to_be_guessed anyway
       srand(time(NULL));
-      srand(time(NULL));
       for (int i=0; i<9; i++) {
         int a = 1 + (rand()%9);
         to_be_guessed[i] = a;

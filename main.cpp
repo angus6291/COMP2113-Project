@@ -15,7 +15,7 @@ void save(vector<int>& to_be_guessed, vector<char>& out_put) {
 		if (x < to_be_guessed.size() - 1) {
 			fout << to_be_guessed[x] << " ";
 		}
-		if (x == to_be_guessedd.size() - 1) {
+		if (x == to_be_guessed.size() - 1) {
 			fout << to_be_guessed[x] << " " << 0 << endl;
 		}
 	}

@@ -7,31 +7,6 @@
 #include "guessing_random_number.h"
 using namespace std;
 
-bool run(vector<int> to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
-  int correct_ans = to_be_guessed[node_coversion];
-  cout << "You have only 3 chances". Good Luck." << endl;
-  int i=3;
-  while (i>0) {
-    int user_input_for_node;
-    cin >> user_input_for_node;
-    if(user_input_for_node == correct_ans) {
-      cout << "Congratulations! You have guessed the right letter within the given chances!" << endl;
-      return true;
-      break;
-    }
-    if(user_input_for_node != correct_ans && i < 3) {
-      cout << "Please retry guessing." << endl;
-    }
-    i--;
-  }
-  
-  if (i==0) {
-  cout << "I am sorry that your chances are used up. You still haven't guessed the right letter. " << endl;
-  return false;
-  break;
-}
-}
-
 void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out_put) { // only run once
      //showing the pre-any in-put bingo board
       cout << "Your current status: (New Game Version) " << endl;
@@ -103,3 +78,28 @@ void run_guessing_random_number_game(vector<int> to_be_guessed, vector<char> out
         break;
       }
       }
+
+bool run(vector<int> to_be_guessed, int node_conversion) { // return true if guessed successfully, false if not guessed successfully
+  int correct_ans = to_be_guessed[node_coversion];
+  cout << "You have only 3 chances". Good Luck." << endl;
+  int i=3;
+  while (i>0) {
+    int user_input_for_node;
+    cin >> user_input_for_node;
+    if(user_input_for_node == correct_ans) {
+      cout << "Congratulations! You have guessed the right letter within the given chances!" << endl;
+      return true;
+      break;
+    }
+    if(user_input_for_node != correct_ans && i < 3) {
+      cout << "Please retry guessing." << endl;
+    }
+    i--;
+  }
+  
+  if (i==0) {
+  cout << "I am sorry that your chances are used up. You still haven't guessed the right letter. " << endl;
+  return false;
+  break;
+}
+}

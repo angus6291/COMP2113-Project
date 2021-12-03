@@ -30,7 +30,6 @@ int run_guessing_random_number_game(vector<int>& to_be_guessed, vector<char>& ou
         char node_input;
         cout << "Please input letters from A to I for the guessing. Do not pick either 'X' (wrong) or 'O' (correct), as those are your result. " << endl;
         cin >> node_input;
-        int max_guessing_chance = 3;
         int node_conversion = int(node_input) - int('A');
         if (run(to_be_guessed, node_conversion) == 1) {out_put[node_conversion] = 'O';}
         else {out_put[node_conversion] = 'X';}
